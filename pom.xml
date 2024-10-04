@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example1</groupId>
+    <groupId>org.example</groupId>
     <artifactId>SportsTimeTracker</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -15,7 +15,7 @@
     </properties>
 
     <build>
-        <finalName>SportsTimeTracker</finalName>
+        <finalName>Test</finalName>
         <plugins>
             <!-- Compiler Plugin for setting the Java version -->
             <plugin>
@@ -36,11 +36,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>SportsTimeTracker</mainClass> <!-- Update with the correct main class -->
+                            <mainClass>SportsTimeTracker</mainClass> <!-- Correct main class -->
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+
+
+            <!-- Other plugins like compiler, jar, jacoco... -->
 
             <!-- Surefire Plugin for running tests -->
             <plugin>
@@ -55,6 +58,7 @@
                     </includes>
                 </configuration>
             </plugin>
+
 
             <!-- JaCoCo Plugin for code coverage -->
             <plugin>

@@ -1,26 +1,56 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SportsTimeTracker {
-    private Map<String, Integer> activities = new HashMap<>();
+    private final List<Activity> activities;
 
-    public void logActivity(String activity, int hours) {
-        activities.put(activity, activities.getOrDefault(activity, 0) + hours);
+    public SportsTimeTracker() {
+        this.activities = new ArrayList<>();
+    }
+
+    private static class Activity {
+        String description;
+        int duration;
+
+        public Activity(String description, int duration) {
+            this.description = description;
+            this.duration = duration;
+        }
+
+        @Override
+        public String toString() {
+            return description + " - " + duration + " minutes";
+        }
+    }
+
+    public void logActivity(String description, int duration) {
+        activities.add(new Activity(description, duration));
+    }
+
+    public String getLastActivity() {
+        if (!activities.isEmpty()) {
+            return activities.get(activities.size() - 1).toString();
+        }
+        return "";
+    }
+
+    public int getNumberOfActivities() {
+        return activities.size();
     }
 
     public void viewActivities() {
-        activities.forEach((activity, hours) -> System.out.println(activity + ": " + hours + " hours"));
+        if (activities.isEmpty()) {
+            System.out.println("No activities logged yet.");
+            return;
+        }
+        System.out.println("Logged Activities:");
+        for (Activity activity : activities) {
+            System.out.println(activity);
+        }
     }
 
-    public int calculateTotalTime() {
-        return activities.values().stream().mapToInt(Integer::intValue).sum();
-    }
-
-    public static void main(String[] args) {
-        SportsTimeTracker tracker = new SportsTimeTracker();
-        tracker.logActivity("Football", 2);
-        tracker.logActivity("Basketball", 1);
-        tracker.viewActivities();
-        System.out.println("Total time spent: " + tracker.calculateTotalTime() + " hours");
+    public void calculateTotalTime() {
+        int total = activities.stream().mapToInt(a -> a.duration).sum();
+        System.out.println("Total time spent on sports this week: " + total + " minutes");
     }
 }
