@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pull code from your Git repository
-                git url: 'https://github.com/eetuam1/Calculator1.git', branch: 'main'
+                git url: 'https://github.com/eetuam1/SportsTimeTracker.git', branch: 'main'
             }
         }
 
