@@ -3,7 +3,7 @@
 FROM maven:latest
 
 # Set metadata information
-LABEL authors="edizm"
+LABEL authors="Eediz"
 
 # Set the working directory in the container
 WORKDIR /app
